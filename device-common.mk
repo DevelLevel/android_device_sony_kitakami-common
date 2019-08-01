@@ -216,6 +216,10 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# Los recording app
+PRODUCT_PACKAGES += \
+    Recorder \
+
 PRODUCT_PACKAGES += \
    macaddrsetup
 
