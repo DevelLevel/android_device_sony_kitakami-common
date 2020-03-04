@@ -182,7 +182,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
     $(LOCAL_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
     $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc\
+    $(LOCAL_PATH)/rootdir/init.spectrum.rc:root/init.spectrum.rc \
+    $(LOCAL_PATH)/rootdir/init.spectrum.sh:root/init.spectrum.sh
 
 # Input
 PRODUCT_COPY_FILES += \
