@@ -24,7 +24,6 @@ allow init sysfs_cpu_boost:file rw_file_perms;
 allow init sysfs_devices_system_cpu:file rw_file_perms;
 allow init sysfs_graphics:file r_file_perms;
 allow init sysfs_kgsl:file rw_file_perms;
-allow init sysfs_livedisplay_tuneable:file setattr;
 allow init sysfs_msm_perf:file rw_file_perms;
 allow init sysfs_thermal:file write;
 allow init sysfs_wake_lock:file ra_file_perms;
