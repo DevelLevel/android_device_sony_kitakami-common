@@ -10,5 +10,9 @@
   {
     "repository": "proprietary_vendor_sony_extras",
     "target_path": "vendor/sony/kitakami-common-extras"
+  },
+  {
+    "repository": "hardware_broadcom_fm",
+    "target_path": "hardware/broadcom/fm"
   }
 ]
