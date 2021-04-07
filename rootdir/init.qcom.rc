@@ -30,7 +30,6 @@
 #
 
 import init.qcom.usb.rc
-import init.spectrum.rc
 
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
