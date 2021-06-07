@@ -77,6 +77,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    audio.bluetooth.default \
     android.hardware.audio@2.0-impl \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.common@6.0 \
@@ -84,6 +85,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.audio.effect@6.0-impl \
+    android.hardware.bluetooth.audio@2.0-impl \
     audiod \
     audio.a2dp.default \
     audio.primary.msm8994 \
@@ -113,7 +115,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
@@ -121,7 +124,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_vendor.conf
 
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
@@ -201,7 +204,7 @@ PRODUCT_PACKAGES += \
 
 # Flash LED config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/flashled_calc_parameters.cfg:system/etc/flashled_calc_parameters.cfg
+    $(LOCAL_PATH)/configs/flashled_calc_parameters.cfg:$(TARGET_COPY_OUT_SYSTEM)/etc/flashled_calc_parameters.cfg
 
 # Health HAL
 PRODUCT_PACKAGES += \
@@ -217,18 +220,18 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
-    $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
+    $(LOCAL_PATH)/rootdir/fstab.qcom:$(TARGET_COPY_OUT_ROOT)/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/init.qcom.usb.rc:$(TARGET_COPY_OUT_ROOT)/init.qcom.usb.rc \
+    $(LOCAL_PATH)/rootdir/init.qcom.rc:$(TARGET_COPY_OUT_ROOT)/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:$(TARGET_COPY_OUT_ROOT)/ueventd.qcom.rc
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/clearpad.kl:system/usr/keylayout/clearpad.kl \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/mhl-rcp.kl:system/usr/keylayout/mhl-rcp.kl \
-    $(LOCAL_PATH)/keylayout/msm8994-tomtom-snd-card_Button_Jack.kl:system/usr/keylayout/msm8994-tomtom-snd-card_Button_Jack.kl \
-    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl
+    $(LOCAL_PATH)/keylayout/clearpad.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/clearpad.kl \
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/keylayout/mhl-rcp.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/mhl-rcp.kl \
+    $(LOCAL_PATH)/keylayout/msm8994-tomtom-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/msm8994-tomtom-snd-card_Button_Jack.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/synaptics_dsx.kl
 
 # IRQ
 PRODUCT_COPY_FILES += \
@@ -369,7 +372,7 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
+    android.hardware.wifi@1.0-service.legacy \
     hostapd \
     libwpa_client \
     WifiOverlay \
