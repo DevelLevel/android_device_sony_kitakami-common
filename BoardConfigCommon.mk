@@ -21,6 +21,9 @@ TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
 
 BOARD_VENDOR := sony
 
+# Build
+BUILD_BROKEN_DUP_RULES := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8994
 TARGET_NO_BOOTLOADER := true
@@ -78,6 +81,7 @@ AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
+BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
@@ -150,6 +154,10 @@ TARGET_PROVIDES_LIBLIGHT := true
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
+ifneq ($(BOARD_HAVE_RADIO),false)
+  DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_radio.xml
+endif
+
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
@@ -203,6 +211,13 @@ TARGET_LD_SHIM_LIBS := \
      /system/lib/libcammw.so|libsensor.so \
      /system/bin/secd|/system/lib64/lib-preload64.so \
      /system/vendor/lib64/libril-qc-qmi-1.so|libaudioclient_shim.so
+
+ifneq ($(BOARD_HAVE_RADIO),false)
+  TARGET_LD_SHIM_LIBS += \
+    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
+    /system/vendor/lib64/lib-imsdpl.so|libshims_boringssl.so \
+    /system/lib64/lib-imsvideocodec.so|libui_shim.so
+endif
 
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
